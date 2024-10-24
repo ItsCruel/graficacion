@@ -1,4 +1,4 @@
-**practica 3**
+**practica 2**
 
 ***Instrucciones***
 generar al menos cinco operadores puntuales utilizando la imagen generada o una imagen previamente cargada
@@ -42,3 +42,46 @@ Lospixeles con un valor superior a 127 se establecen en blanco (255), y los pixe
 imagenUmbral=cv2.threshold (imagenGris,127,255,cv2.THRESH_BINARY) 
 ~~~
 
+como tercer operador decidi hacer una inversion de colores , por medio del bitwise not, lo que hace es que invierte los colores de la imagen original , transformando pixeles claros en oscuros y viceversa.
+~~~
+imagenInvertida=cv2.bitwise_ not(imagen) 
+~~~
+
+como cuarto operador elegi hacer un ajuste de brillo , para esto 
+
+como quinto operador realice un ajuste en el contraste para esto usamos el convertScaleAbs y seteamos el alpha en 1.5 y beta en 0.
+
+cv2.convertScaleAbs(imagen,alpha=1.5,beta=0)
+
+como paso final nadamas nos queda mostrar el resultado de nuestro trabajo con el siguiente codigo :
+
+~~~
+cv2.imshow ('imagen normal', imagen)
+cv2.imshow('Imagen con escala de grises', imagenGris)
+cv2.imshow('imagen con Umbralizacion', imagenUmbral)
+cv2.imshow('imagen Brillo Aumentado', imagenBrillante)
+cv2.imshow('imagen Invertida', imagenInvertida)
+cv2.imshow ('imagen con Contraste ', imagenContraste)
+~~~
+
+aqui las imagenes de como queda cada una
+
+**mostrando resultados**
+- 'Imagen Original'
+
+- 'Escala de Grises'
+
+- 'Umbralizacion'
+
+- 'Inversion de Colores'
+
+- 'Brillo Aumentado'
+
+- 'Contraste Aumentado'
+
+por ultimo se cierra el programa 
+
+~~~
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+~~~
