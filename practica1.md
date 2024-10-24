@@ -1,6 +1,6 @@
-**PRACTICA1 
+**PRACTICA1**
 
-***Descripcion
+***Descripcion***
 Para esta practica se solicito generar una imagen tipo pixel art utilizando una matriz de enteros en el rango de 0 a 255.
 
 como paso 0 decidi que queria hacer un hongo del minecraft de los que son como cafecitos
