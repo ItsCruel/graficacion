@@ -14,4 +14,17 @@ imagenUmbral= cv2.threshold(imagenGris, 127,255,cv2.THRESH_BINARY)
 imagenInvertida = cv2.bitwise_not (imagen)
 
 #4.Ajuste de Brillo 
-imagen
+imagenBrillante = cv2.bitwise_not(imagen)
+
+#5.Ajuste de Contraste
+imagenContraste = cv2.convertScaleAbs(imagen,alpha=1.5,beta=0)
+
+#Mostrando los 5 operadores puntuales
+cv2.imshow ('imagen normal', imagen)
+cv2.imshow('Imagen con escala de grises', imagenGris)
+cv2.imshow('imagen con Umbralizacion', imagenUmbral)
+cv2.imshow('imagen Brillo Aumentado', imagenBrillante)
+cv2.imshow('imagen Invertida', imagenInvertida)
+cv.imshow ('imagen con Contraste ', imagenContraste)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
