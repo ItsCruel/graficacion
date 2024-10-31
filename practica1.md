@@ -5,7 +5,7 @@ Para esta practica se solicito generar una imagen tipo pixel art utilizando una 
 
 como paso 0 decidi que queria hacer un hongo del minecraft de los que son como cafecitos
 <br>
-![][https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/hongominecraft.jpg]
+![hongo minecraft](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/hongominecraft.jpg)
 </br>
 
 comopaso 1 se creo una imagen , yo decidi hacerla de 500 x 500 pixeles , el tipo de dato unit8 quiere decir que cada valor de pixel tiene 8 bits y luego se multiplico por 240 que da un fondo gris claro 
