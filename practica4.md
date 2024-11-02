@@ -70,3 +70,47 @@ En calculo, las ecuaciones parametricas permiten estudiar la velocidad y acelera
 dydx=y′(t)x′(t)
    
 Este concepto es  muy importante en la fisica y la ingeniería para el analisis de movimiento.
+Graficas de Ecuaciones Parametricas
+
+Las graficas de ecuaciones parametricas se trazan al calcular los puntos x(t), y(t) para diversos valores del parametro (t). Este metodo es especialmente util cuando la forma de la curva es complicada y no se puede expresar facilmente en forma cartesiana.
+
+ Ejemplo de Graficacion en Python
+
+Aqui se muestra como graficar una circunferencia utilizando ecuaciones parametricas:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Definir el rango del parametro t
+t = np.linspace(0, 2 * np.pi, 100)
+
+# Ecuaciones parametricas de la circunferencia
+r = 1  # Radio
+x = r * np.cos(t)
+y = r * np.sin(t)
+
+# Graficar
+plt.figure(figsize=(6, 6))
+plt.plot(x, y, label='Circunferencia')
+plt.title('Circunferencia con Ecuaciones Parametricas')
+plt.xlabel('x(t) = r * cos(t)')
+plt.ylabel('y(t) = r * sin(t)')
+plt.axis('equal')  # Para mantener la proporcion
+plt.grid(True)
+plt.legend()
+plt.show()
+```
+##¿Para que nos sirve?
+
+Las ecuaciones parametricas son una herramienta muy buena para  diversas disciplinas. 
+Su utilidad radica en su capacidad para modelar situaciones que no pueden describirse facilmente mediante ecuaciones algebraicas tradicionales. 
+Proporcionan una alta  flexibilidad en la representacion de formas y movimientos, permitiendo a los investigadores y profesionales abordar problemas complejos en diversas aplicaciones. 
+Desde el diseño grafico hasta la ingenieria, su versatilidad las convierte en una parte integral del analisis matematico y cientifico.
+
+
+##Conclusion
+Las ecuaciones parameetricas son fundamentales en matemaaticas y sus aplicaciones abarcan multiples campos. 
+Permiten describir fenomenos complejos y proporcionar un marco para el analisis de trayectorias y formas en geometria y fisica.
+ Su capacidad para simplificar la representacion de curvas y superficies las convierte en una herramienta invaluable en la ciencia y la ingeniería. 
+ Con su versatilidad y adaptabilidad, las ecuaciones parametricas continuaran siendo un tema de gran interes en la investigacion y el desarrollo de nuevas tecnologías.
