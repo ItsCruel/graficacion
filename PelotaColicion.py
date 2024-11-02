@@ -1,8 +1,6 @@
-'pixel-art-hongo'
-#
-[i, j]
+
 import cv2
-import numpty as np 
+import numpy as np 
 
 
 # Dimensiones 
@@ -25,8 +23,8 @@ v_roja=np.array([0, 0])
 
 
 #Colores
-c azul = (255,0,0)
-c roja = (0,0,255)
+c_azul = (255, 0, 0)
+c_roja = (0, 0, 255)
 
 
 #Bucle de animacion 
@@ -36,11 +34,12 @@ while True:
 
 
     # Dibujar pelotitas
-    cv2.circle(frame, p azul,r,c azul, -1)
-    cv2.circle(frame,p_roja,r,c roja,-1)
+    cv2.circle(frame, p_azul, r, c_azul, -1)
+    cv2.circle(frame, p_roja, r, c_roja, -1)
+
 
     # Mover azul 
-    p azul += v azul
+    p_azul += v_azul
 
 
     # Colisiones azul
@@ -48,13 +47,24 @@ while True:
         v_azul[0]= -v_azul[0]
 
 
-     if p_azul[1]-r<=0 or p_azul[1] + r>=h:
+    if p_azul[1]-r<=0 or p_azul[1] + r>=h:
             v_azul[1] = -v_azul[1]
 
 
      #Proximidad
-    dist= np.linalg.norm(p azul- p roja)
+    dist= np.linalg.norm(p_azul - p_roja)
     if dist < 2 * r:
      
-     #Mover roja a posicion aleatoria 
-     p_roja = np.array(np.random.randint(r, w -r)),
+       # Mover roja a posicion aleatoria
+        p_roja = np.array([np.random.randint(r, w - r),
+                           np.random.randint(r, h - r)])
+    
+    # Mostrar animacion
+    cv2.imshow("Anim", frame)
+    
+    # Salir con 'q'
+    if cv2.waitKey(30) & 0xFF == ord('q'):
+        break
+
+# Cerrar ventana
+cv2.destroyAllWindows()
