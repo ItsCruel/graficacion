@@ -38,12 +38,12 @@ Ejemplos :
 </b>
 
  **Aplicaciones de las Ecuaciones Parametricas**
- 1. Ingeniería:
-  Se utilizan en el diseño de estructuras y componentes. Por ejemplo, las trayectorias de cargas en un puente o las trayectorias de vehículos en un sistema de trafico se modelan con ecuaciones parametricas para asegurar la estabilidad y la funcionalidad de los diseños.
+ 1. Ingenieria:
+Se utilizan en el diseño de estructuras y componentes. Por ejemplo, las trayectorias de cargas en un puente o las trayectorias de vehículos en un sistema de trafico se modelan con ecuaciones parametricas para asegurar la estabilidad y la funcionalidad de los diseños.
 
 2. Animación y Modelado 3D:
-   - En graficos por computadora, las ecuaciones parametricas permiten crear curvas suaves y superficies complejas, facilitando la representacion de objetos tridimensionales. Esto es importante en la creacion de videojuegos y películas animadas.
+En graficos por computadora, las ecuaciones parametricas permiten crear curvas suaves y superficies complejas, facilitando la representacion de objetos tridimensionales. Esto es importante en la creacion de videojuegos y películas animadas.
 
 3. Robotica:
-   - En la planificacion de trayectorias, las ecuaciones parametricas son fundamentales para mover brazos roboticos o vehiculos autonomos a lo largo de rutas específicas. Permiten calcular movimientos precisos en entornos variables.
+En la planificacion de trayectorias, las ecuaciones parametricas son fundamentales para mover brazos roboticos o vehiculos autonomos a lo largo de rutas específicas. Permiten calcular movimientos precisos en entornos variables.
 
