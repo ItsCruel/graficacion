@@ -1,12 +1,12 @@
 **PRACTICA 4**
 
-***Ecuaciones Parametricas**
+**Ecuaciones Parametricas**
 
-Las ecuaciones parametricas son un conjunto de ecuaciones que representan una relacion entre variables mediante la introducción de una o más variables adicionales, llamadas parámetros. A diferencia de las ecuaciones estandar, que expresan una variable en funcion de otra, las ecuaciones parametricas describen las variables en terminos de un parametro comun, lo que permite una representacion mas flexible de diversas relaciones.
+Las ecuaciones parametricas son un conjunto de ecuaciones que representan una relacion entre variables mediante la introduccion de una o mas variables adicionales, llamadas parametros. A diferencia de las ecuaciones estandar, que expresan una variable en funcion de otra, las ecuaciones parametricas describen las variables en terminos de un parametro comun, lo que permite una representacion mas flexible de diversas relaciones.
 
 **Definicion**
 
-Las ecuaciones paramétricas utilizan uno o mas parametros para expresar una o mas variables. Esto es especialmente util en geometría y fisica, donde se requieren representaciones mas complejas que las que podrían ofrecer las ecuaciones en forma estadar. Al introducir un parametro, se puede representar una variedad de formas y trayectorias que son dificiles de describir con ecuaciones algebraicas tradicionales.
+Las ecuaciones parametricas utilizan uno o mas parametros para expresar una o mas variables. Esto es especialmente util en geometria y fisica, donde se requieren representaciones mas complejas que las que podrían ofrecer las ecuaciones en forma estadar. Al introducir un parametro, se puede representar una variedad de formas y trayectorias que son dificiles de describir con ecuaciones algebraicas tradicionales.
 <b>
 Ejemplos :
 </b>
@@ -25,7 +25,7 @@ a  y b siendo semiejes de la elipse. El parámetro ( t ) varía de (0) a ( 2π).
 x(t) = aSec(t)
 y(t) = bTan(t)
   
-a y  b son constantes que determinan la forma de la hiperbola. Las hiperbolas son comunes en la teoría de funciones y en aplicaciones de ingenieria.
+a y  b son constantes que determinan la forma de la hiperbola. Las hiperbolas son comunes en la teoria de funciones y en aplicaciones de ingenieria.
 </b>
 
 <b>
@@ -47,8 +47,8 @@ En graficos por computadora, las ecuaciones parametricas permiten crear curvas s
 3. Robotica:
 En la planificacion de trayectorias, las ecuaciones parametricas son fundamentales para mover brazos roboticos o vehiculos autonomos a lo largo de rutas específicas. Permiten calcular movimientos precisos en entornos variables.
 
-4. Meteorología y Navegación:
- Se emplean para modelar la trayectoria de masas de aire o para calcular rutas optimas en la navegación. Esto es vital en la predicción del clima y en la logística de transporte.
+4. Meteorología y Navegacion:
+ Se emplean para modelar la trayectoria de masas de aire o para calcular rutas optimas en la navegacion. Esto es vital en la predicción del clima y en la logística de transporte.
 
  **Otros Conceptos Matematicos**
  
