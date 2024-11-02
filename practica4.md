@@ -1,6 +1,6 @@
-**PRACTICA 4**
+##PRACTICA 4
 
-**Ecuaciones Paramétricas**
+###Ecuaciones Paramétricas
 
 Las ecuaciones parametricas son un conjunto de ecuaciones que representan una relacion entre variables mediante la introducción de una o más variables adicionales, llamadas parámetros. A diferencia de las ecuaciones estandar, que expresan una variable en funcion de otra, las ecuaciones parametricas describen las variables en terminos de un parametro comun, lo que permite una representacion mas flexible de diversas relaciones.
 
@@ -55,16 +55,16 @@ En la planificacion de trayectorias, las ecuaciones parametricas son fundamental
 Curvas y Superficies en el Espacio:
 
 Las ecuaciones parametricas pueden extenderse a tres dimensiones. Por ejemplo, una curva en el espacio tridimensional puede estar representada por:
-    x(t) = f(t)
-    y(t) = g(t)
-    z(t) = h(t)
+   1. x(t) = f(t)
+   2. y(t) = g(t)
+   3. z(t) = h(t)
    
  Esta extension es fundamental en la visualizacion y simulación de fenomenos en fisica y diseño.
 
- -Geometria Analitica:
+**Geometria Analitica**:
 Las ecuaciones parametricas son una extension de la geometria analítica, donde se utilizan para describir figuras geometricas de forma más general. Permiten analizar las propiedades de las curvas y superficies de manera más profunda.
 
--Calculo:
+**Calculo**:
 En calculo, las ecuaciones parametricas permiten estudiar la velocidad y aceleracion a lo largo de una curva al diferenciar las funciones respecto al parametro. La derivada de una curva parametrizada se puede expresar como:
 
 dydx=y′(t)x′(t)
