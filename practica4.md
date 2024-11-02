@@ -4,7 +4,7 @@
 
 Las ecuaciones parametricas son un conjunto de ecuaciones que representan una relacion entre variables mediante la introducción de una o más variables adicionales, llamadas parámetros. A diferencia de las ecuaciones estandar, que expresan una variable en funcion de otra, las ecuaciones parametricas describen las variables en terminos de un parametro comun, lo que permite una representacion mas flexible de diversas relaciones.
 
-*** Definición***
+** Definición**
 
 Las ecuaciones paramétricas utilizan uno o mas parametros para expresar una o mas variables. Esto es especialmente util en geometría y fisica, donde se requieren representaciones mas complejas que las que podrían ofrecer las ecuaciones en forma estadar. Al introducir un parametro, se puede representar una variedad de formas y trayectorias que son dificiles de describir con ecuaciones algebraicas tradicionales.
 <b>
@@ -36,3 +36,14 @@ Ejemplos :
    
    - Aquí, v0 es la velocidad inicial( θ) es el ángulo de lanzamiento y ( g ) es la aceleracion debida a la gravedad. Este modelo es bastante bueno  para predecir la trayectoria de proyectiles.
 </b>
+
+ **Aplicaciones de las Ecuaciones Parametricas**
+ 1. Ingeniería:
+  Se utilizan en el diseño de estructuras y componentes. Por ejemplo, las trayectorias de cargas en un puente o las trayectorias de vehículos en un sistema de trafico se modelan con ecuaciones parametricas para asegurar la estabilidad y la funcionalidad de los diseños.
+
+2. Animación y Modelado 3D:
+   - En graficos por computadora, las ecuaciones parametricas permiten crear curvas suaves y superficies complejas, facilitando la representacion de objetos tridimensionales. Esto es importante en la creacion de videojuegos y películas animadas.
+
+3. Robotica:
+   - En la planificacion de trayectorias, las ecuaciones parametricas son fundamentales para mover brazos roboticos o vehiculos autonomos a lo largo de rutas específicas. Permiten calcular movimientos precisos en entornos variables.
+
