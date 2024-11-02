@@ -1,10 +1,10 @@
-##PRACTICA 4
+**PRACTICA 4**
 
-###Ecuaciones Paramétricas
+***Ecuaciones Parametricas**
 
 Las ecuaciones parametricas son un conjunto de ecuaciones que representan una relacion entre variables mediante la introducción de una o más variables adicionales, llamadas parámetros. A diferencia de las ecuaciones estandar, que expresan una variable en funcion de otra, las ecuaciones parametricas describen las variables en terminos de un parametro comun, lo que permite una representacion mas flexible de diversas relaciones.
 
-**Definición**
+**Definicion**
 
 Las ecuaciones paramétricas utilizan uno o mas parametros para expresar una o mas variables. Esto es especialmente util en geometría y fisica, donde se requieren representaciones mas complejas que las que podrían ofrecer las ecuaciones en forma estadar. Al introducir un parametro, se puede representar una variedad de formas y trayectorias que son dificiles de describir con ecuaciones algebraicas tradicionales.
 <b>
@@ -80,7 +80,7 @@ Aqui se muestra como graficar una circunferencia utilizando ecuaciones parametri
 
 ```python
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt 
 
 # Definir el rango del parametro t
 t = np.linspace(0, 2 * np.pi, 100)
@@ -101,15 +101,17 @@ plt.grid(True)
 plt.legend()
 plt.show()
 ```
-##¿Para que nos sirve?
+<b>
+
+***¿Para que nos sirve?***
 
 Las ecuaciones parametricas son una herramienta muy buena para  diversas disciplinas. 
 Su utilidad radica en su capacidad para modelar situaciones que no pueden describirse facilmente mediante ecuaciones algebraicas tradicionales. 
 Proporcionan una alta  flexibilidad en la representacion de formas y movimientos, permitiendo a los investigadores y profesionales abordar problemas complejos en diversas aplicaciones. 
 Desde el diseño grafico hasta la ingenieria, su versatilidad las convierte en una parte integral del analisis matematico y cientifico.
+</b>
 
-
-##Conclusion
+**Conclusion**
 Las ecuaciones parameetricas son fundamentales en matemaaticas y sus aplicaciones abarcan multiples campos. 
 Permiten describir fenomenos complejos y proporcionar un marco para el analisis de trayectorias y formas en geometria y fisica.
  Su capacidad para simplificar la representacion de curvas y superficies las convierte en una herramienta invaluable en la ciencia y la ingeniería. 
