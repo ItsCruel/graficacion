@@ -36,7 +36,7 @@ a (199 , 319) creando el rectangulo de 60  x 40 pixeles.
 
 ***Monstrando Imagen***
 por ultimo quede mostrar el resultado del pixel art 
-!(champiñon pixel art)(https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/hongomine.jpg)
+![hongo Pixel Art](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/hongomine.jpg)
 
     
 
