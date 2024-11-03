@@ -135,9 +135,9 @@ parte 6 se dibuja la pelotita,  se dibuja un círculo en `fotograma` en la posic
 #  Mostrando los Resultados
    <p>
 por ultimo quede mostrar el resultado del pixel art 
-![Pelota](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/hongomine.jpg)
+![.](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/pelota1.png?raw=true)
 </p>
 <p>
 por ultimo quede mostrar el resultado del pixel art 
-![pelota Actualizada](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/hongomine.jpg)
+![.](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/pelota2.png?raw=true)
 </p>
