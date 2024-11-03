@@ -47,11 +47,18 @@ como tercer operador decidi hacer una inversion de colores , por medio del bitwi
 imagenInvertida=cv2.bitwise_ not(imagen) 
 ~~~
 
-como cuarto operador elegi hacer un ajuste de brillo , para esto 
+como cuarto operador elegi hacer un ajuste de brillo , para esto usamos  moviendo el alfa a 1 y el beta al 50
+~~~
+imagenBrillante = cv2.convertScaleAbs(imagen, alpha=1, beta=50)
+~~~
+
 
 como quinto operador realice un ajuste en el contraste para esto usamos el convertScaleAbs y seteamos el alpha en 1.5 y beta en 0.
 
+~~~
 cv2.convertScaleAbs(imagen,alpha=1.5,beta=0)
+~~~
+
 
 como paso final nadamas nos queda mostrar el resultado de nuestro trabajo con el siguiente codigo :
 
@@ -68,16 +75,17 @@ aqui las imagenes de como queda cada una
 
 **mostrando resultados**
 - 'Imagen Original'
-
+![Emile original](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/emile.png?raw=true)
 - 'Escala de Grises'
-
+![Escala de grises ](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/imagenEscaladegrises.png?raw=true)
 - 'Umbralizacion'
-
+![Emile Umbralizacion](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/imagenUmbrealizacion.png?raw=true)
 - 'Inversion de Colores'
-
+![Emile Inversion de Colores](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/imageninvertida.png?raw=true)
 - 'Brillo Aumentado'
-
+![Emile Brillo Aumentado](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/imagenbrilloaumentado.png?raw=true)
 - 'Contraste Aumentado'
+![Emile Contraste aumentado](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/imagen%20contraste.png?raw=true)
 
 por ultimo se cierra el programa 
 
