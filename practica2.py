@@ -8,13 +8,13 @@ imagen = cv2.imread('emile.png')
 imagenGris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
 
 #2.Umbrealizacion
-imagenUmbral= cv2.threshold(imagenGris, 127,255,cv2.THRESH_BINARY)
+_, imagenUmbral = cv2.threshold(imagenGris, 127, 255, cv2.THRESH_BINARY)
 
 #3.Inversion de Color
 imagenInvertida = cv2.bitwise_not (imagen)
 
-#4.Ajuste de Brillo 
-imagenBrillante = cv2.bitwise_not(imagen)
+# 4. Ajuste de Brillo (incrementar el brillo en 50 unidades)
+imagenBrillante = cv2.convertScaleAbs(imagen, alpha=1, beta=50)
 
 #5.Ajuste de Contraste
 imagenContraste = cv2.convertScaleAbs(imagen,alpha=1.5,beta=0)
