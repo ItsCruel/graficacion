@@ -133,11 +133,7 @@ parte 6 se dibuja la pelotita,  se dibuja un círculo en `fotograma` en la posic
     - Una vez que el bucle se rompe, se cierran todas las ventanas de OpenCV con `cv2.destroyAllWindows()`.
 
 #  Mostrando los Resultados
-   <p>
-por ultimo quede mostrar el resultado del pixel art 
+ pelota normal
 ![.](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/pelota1.png?raw=true)
-</p>
-<p>
-por ultimo quede mostrar el resultado del pixel art 
+pelota rebotada
 ![.](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/pelota2.png?raw=true)
-</p>
