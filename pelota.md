@@ -1,4 +1,5 @@
-**Practica Pelota**
+# Practica Pelota
+
 **Introduccion**
 Este codigo se trata de una  animacion sencilla donde una pelota rebota dentro de una ventana usando la biblioteca OpenCV. 
 
@@ -8,10 +9,10 @@ python
 import cv2
 import numpy as np
 
-# seleccionamos las dfimensiones de la ventana
+**seleccionamos las dimensiones de la ventana**
 ancho, alto = 640, 480
 
-# ceamos la  ventana
+**creamos la  ventana**
 cv2.namedWindow("Animacion", cv2.WINDOW_AUTOSIZE)
 
 
