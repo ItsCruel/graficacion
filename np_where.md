@@ -22,3 +22,4 @@ alto_rojo1 = np.array([10, 255, 255])
 bajo_rojo2 = np.array([160, 40, 40])
 alto_rojo2 = np.array([180, 255, 255])
 ```
+![Rojos](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/rojos1.png?raw=true)
