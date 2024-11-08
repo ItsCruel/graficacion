@@ -1,4 +1,4 @@
-##Practica MatrizSobel
+## Practica MatrizSobel
  como paso 0 : importamos las librerias correspondientes 
 ```python
 import cv2 as cv
