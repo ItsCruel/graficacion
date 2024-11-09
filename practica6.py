@@ -21,7 +21,7 @@ for eq in range(10):
         y = 120 * np.sin(t)
     elif eq == 2:
         # espiral logaritmica
-        r = np.exp(0.1 * t)
+        r = np.exp(0.9 * t)
         x = r * np.cos(t)
         y = r * np.sin(t)
     elif eq == 3:

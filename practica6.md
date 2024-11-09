@@ -1,5 +1,5 @@
 
-## Practica 10  Parametricas
+## Practica 6 
 
 Instrucciones 
 para esta practica el profe nos pidio hacer 10 parametricas vistas en clase 
@@ -26,8 +26,8 @@ centro_x, centro_y = ancho // 2, alto // 2
 
 
 
-- `t = np.linspace(0, 2 * np.pi, 1000)`: Genera un conjunto de valores de `t` entre 0 y (2π), creando un total de 1000 puntos para suavizar las curvas.
----
+ `t = np.linspace(0, 2 * np.pi, 1000)`: Genera un conjunto de valores de `t` entre 0 y (2π), creando un total de 1000 puntos para suavizar las curvas.
+
 
 ### Definimos mis curvas Parametricas
 
@@ -42,7 +42,7 @@ if eq == 0:
     x = 180 * np.cos(t)
     y = 180 * np.sin(t)
 ```
-![circulo]()
+![circulo](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/circulo.png?raw=true)
 
 </p>
 
@@ -55,7 +55,7 @@ elif eq == 1:
     x = 220 * np.cos(t)
     y = 120 * np.sin(t)
 ```
-![Elipse]()
+![Elipse](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/elipse.png?raw=true)
 </p>
 
 <p>
@@ -64,7 +64,7 @@ elif eq == 1:
 ```python
 elif eq == 2:
     # Espiral logaritmica
-    r = np.exp(0.1 * t)
+    r = np.exp(0.9 * t)
     x = r * np.cos(t)
     y = r * np.sin(t)
 ```
