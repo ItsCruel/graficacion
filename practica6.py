@@ -3,15 +3,14 @@ import cv2
 
 # tamaño de la imagen
 ancho, alto = 800, 800
-img = np.zeros((alto, ancho, 3), dtype=np.uint8)
-
 # Centro de la imagen
 centro_x, centro_y = ancho // 2, alto // 2
 
-# Dibujar 10 ecuaciones parametricas
+# Dibujar 10 ecuaciones paramétricas
 for eq in range(10):
-    t = np.linspace(0, 2 * np.pi, 1000)  # Parametro t
-   
+    img = np.zeros((alto, ancho, 3), dtype=np.uint8)
+    t = np.linspace(0, 2 * np.pi, 1000)  # Parámetro t
+
     if eq == 0:
         # Circulo
         x = 180 * np.cos(t)
@@ -59,18 +58,19 @@ for eq in range(10):
         x = 180 * np.sinh(t)
         y = 130 * np.cosh(t)
 
-
     # Mover las coordenadas al centro de la imagen
     x = np.int32(centro_x + x)
     y = np.int32(centro_y - y)
 
-
-    # Dibujar las lineas entre los puntos
+ # Dibujar las líneas entre los puntos
     for j in range(len(x) - 1):
         cv2.line(img, (x[j], y[j]), (x[j + 1], y[j + 1]), (255, 255, 255), 2)
 
+ # Mostrar la imagen con la curva actual
+    ventana = f"Curva Parametrica"
+    cv2.imshow(ventana, img)
+    cv2.waitKey(0)
+    cv2.destroyWindow(ventana)
 
-# Mostrar la imagen con las curvas
-cv2.imshow("curvAs Parametrica", img)
-cv2.waitKey(0)
+# Cerrar todas las ventanas al finalizar
 cv2.destroyAllWindows()

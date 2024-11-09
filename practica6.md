@@ -70,3 +70,51 @@ elif eq == 2:
 ```
 ![Espiral Logaritmica]()
 </p>
+<p>
+**Lemniscata** : una figura en forma de ∞ o infinito:
+  
+  ```python
+  elif eq == 3:
+      x = 180 * np.cos(t) / (1 + np.sin(t)**2)
+      y = 180 * np.sin(t) * np.cos(t) / (1 + np.sin(t)**2)
+  ```
+![Lemnistica]()
+
+</p>
+
+<p>
+- **Rosa de 3 petalos**:
+Son curvas parametrizadas que se generan con un parámetro k que controla el numero de petalos. 
+
+  ```python
+  elif eq == 4:
+      k = 3
+      r = 180 * np.cos(k * t)
+      x = r * np.cos(t)
+      y = r * np.sin(t)
+  ```
+
+![Rosa de 3 petalos]()
+
+</p>
+
+- **Cardioide**:
+Un cardioide es  una curva en forma de corazon que se genera usando una formula paramétrica específica La forma es simetrica y característica por su unico bucle.
+  ```python
+  elif eq == 5:
+      x = 180 * (1 - np.cos(t)) * np.cos(t)
+      y = 180 * (1 - np.cos(t)) * np.sin(t)
+  ```
+![cardioide]()
+
+
+</p>
+
+ Mostrando las imagenes con las curvas
+nadamas nos queda mostrar los resultados y cerrar el programa
+```python
+cv2.imshow("Curvas Parametricas", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
