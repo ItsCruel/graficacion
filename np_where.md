@@ -1,4 +1,8 @@
 ## Practica NP Where Foto
+
+### Instrucciones 
+Para esta practica crearemos un filtro de imagen que resaltara las imagenes color rojo, por medio de una foto , yo use una de halo.
+
 parte 0 como siempre importamos las librerias
 ```python
 import cv2

@@ -19,7 +19,7 @@ mascara_rojo2 = cv2.inRange(frame_hsv, bajo_rojo2, alto_rojo2)
 mascara_rojo = cv2.add(mascara_rojo1, mascara_rojo2)
  #cuadro original a escala de grises
 frame_gris = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
+ 
 #  imagen gris a un formato BGR 
 frame_gris_bgr = cv2.cvtColor(frame_gris, cv2.COLOR_GRAY2BGR)
     
