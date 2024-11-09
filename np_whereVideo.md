@@ -1,5 +1,4 @@
-sjshjPractica NP WHERE VIDEO
-
+## Practica NP WHERE VIDEO
 
 ### Instrucciones
 para esta practica crearemos un filtro np where en el cual buscaremos un color y lo resaltaremos , el profesor uso verde pero yo usare el color rojo.
