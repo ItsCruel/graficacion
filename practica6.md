@@ -56,7 +56,7 @@ elif eq == 1:
 <p>
 - **Espiral Logarítmica**: A medida que `t` aumenta, `r` crece de forma exponencial, produciendo una espiral.
 
-```python
+```
 elif eq == 2:
     # Espiral logaritmica
     r = np.exp(0.9 * t)
@@ -82,7 +82,7 @@ elif eq == 2:
 - **Rosa de 3 petalos**:
 Son curvas parametrizadas que se generan con un parámetro k que controla el numero de petalos. 
 
-  ```python
+  ```
   elif eq == 4:
       k = 3
       r = 180 * np.cos(k * t)
@@ -110,7 +110,7 @@ Un cardioide es  una curva en forma de corazon que se genera usando una formula 
 
 
 <p>
-  **Hipociclo**
+  **Hipociclo**:
   Un hipociclo es una curva generada por un punto en el borde de un circulo pequeño que rueda sin deslizarse dentro de otro circulo mas grande. 
 
   ```
@@ -120,10 +120,10 @@ Un cardioide es  una curva en forma de corazon que se genera usando una formula 
     elif eq == 7:
 ```
 ![Hipociclo](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/hipociclo.png?raw=true)
-    </p>
+ </p>
 
-    <p>
-  **Espiral de arquimedes**
+  <p>
+  **Espiral de arquimedes**:
   La espiral de Arquimedes es una curva en la que la distancia entre las vueltas sucesivas aumenta de forma lineal. 
 
   ```
@@ -133,23 +133,21 @@ Un cardioide es  una curva en forma de corazon que se genera usando una formula 
     y = r * np.sin(t)
     elif eq == 8:
     ```
+  ![Espiral de Arquimedes](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/espiral.png?raw=true)
+  </p>
 
-    ![Espiral de Arquimedes](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/espiral.png?raw=true)
-    </p>
-
-    <p>
+  <p>
   **Asteroide**
    Un asteroide es una curva en forma de estrella con cuatro "lobulos" o picos.
-
     ```
     x = 180 * (np.cos(t)**3)
     y = 180 * (np.sin(t)**3)
     elif eq == 9:
     ```
     ![Asteroide](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/astroide.png?raw=true)
-    </p>
+  </p>
 
-    <p>
+  <p>
     **Hiperbola**
     Una hiperbola es una curva simetrica que tiene dos ramas que se alejan indefinidamente. 
     ```
@@ -158,11 +156,11 @@ Un cardioide es  una curva en forma de corazon que se genera usando una formula 
      ```
 
      ![Hiperbola](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/hiperbolaa.png?raw=true)
-     </p>
+  </p>
 
 
 nadamas nos queda mostrar los resultados y cerrar el programa
-```python
+```
 cv2.imshow("Curvas Parametricas", img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
