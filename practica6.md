@@ -1,4 +1,3 @@
-
 ## Practica 6 
 
 Instrucciones 
@@ -15,16 +14,11 @@ img = np.zeros((alto, ancho, 3), dtype=np.uint8)
 
 
 ### Calculamos el centro de la imagen
-
 ```
 centro_x, centro_y = ancho // 2, alto // 2
 ```
 
  `centro_x, centro_y`: Coordenadas del centro de la imagen. Se utilizan para centrar las curvas en la imagen.
-
-
-
-
 
  `t = np.linspace(0, 2 * np.pi, 1000)`: Genera un conjunto de valores de `t` entre 0 y (2π), creando un total de 1000 puntos para suavizar las curvas.
 
@@ -123,7 +117,7 @@ Un cardioide es  una curva en forma de corazon que se genera usando una formula 
     y = (R - r) * np.sin(t) - d * np.sin(((R - r) / r) * t)
     elif eq == 7:
 ```
-![Hipociclo]()
+![Hipociclo](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/hipociclo.png?raw=true)
     </p>
 
     <p>
@@ -138,7 +132,7 @@ Un cardioide es  una curva en forma de corazon que se genera usando una formula 
     elif eq == 8:
     ```
 
-    ![Espiral de Arquimedes]()
+    ![Espiral de Arquimedes](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/espiral.png?raw=true)
     </p>
 
     <p>
@@ -161,23 +155,13 @@ Un cardioide es  una curva en forma de corazon que se genera usando una formula 
      y = 130 * np.cosh(t)
      ```
 
-     ![Hiperbola]()
+     ![Hiperbola](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/hiperbolaa.png?raw=true)
      </p>
 
 
-
-
-
-
-
-
-
-
- Mostrando las imagenes con las curvas
 nadamas nos queda mostrar los resultados y cerrar el programa
 ```python
 cv2.imshow("Curvas Parametricas", img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
-
