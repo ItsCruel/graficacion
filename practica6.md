@@ -1,14 +1,15 @@
 ## Practica 6 
 
-Instrucciones 
+### Instrucciones 
 para esta practica el profe nos pidio hacer 10 parametricas vistas en clase 
 
 como siempre paso 0 importamos el nummpy y el cv 
-```python
+
+```
 import numpy as np
 import cv2
-
-# Definimos el  tamaño de la imagen , yo use un 800 x 800 en blanco y la inicalizamos en negro
+```
+### Definimos el  tamaño de la imagen , yo use un 800 x 800 en blanco y la inicalizamos en negro
 ancho, alto = 800, 800
 img = np.zeros((alto, ancho, 3), dtype=np.uint8)
 
@@ -28,7 +29,7 @@ centro_x, centro_y = ancho // 2, alto // 2
 Cada curva se dibuja de acuerdo a una ecuacion en particular:
 
 <p>
-**Círculo**: Los puntos de `x` e `y` se calculan usando funciones trigonometricas, escalados por un radio de 180.
+***Círculo***: Los puntos de `x` e `y` se calculan usando funciones trigonometricas, escalados por un radio de 180.
 
 ```python
 if eq == 0:
@@ -41,7 +42,7 @@ if eq == 0:
 </p>
 
 <p>
-- **Elipse**: Parecida al circulo, pero con radios diferentes en los ejes `x` y `y`.
+**Elipse**: Parecida al circulo, pero con radios diferentes en los ejes `x` y `y`.
 
 ```python
 elif eq == 1:
@@ -64,6 +65,7 @@ elif eq == 2:
 ```
 ![Espiral Logaritmica](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/espiral%20logaritmica.png?raw=true)
 </p>
+
 <p>
 **Lemniscata** : una figura en forma de ∞ o infinito:
   
