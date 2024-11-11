@@ -73,6 +73,6 @@ cv2.destroyAllWindows()
 
 **Mostrando Resultados**
 <p>
-![]()
+![.](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/halo2.png?raw=true)
 </p>
-![]()
+![.](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/imagenNPWHERE%20Foto.png?raw=true)
