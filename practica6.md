@@ -31,7 +31,7 @@ Cada curva se dibuja de acuerdo a una ecuacion en particular:
 <p>
 ***Círculo***: Los puntos de `x` e `y` se calculan usando funciones trigonometricas, escalados por un radio de 180.
 
-```python
+```
 if eq == 0:
     # Círculo
     x = 180 * np.cos(t)
@@ -44,7 +44,7 @@ if eq == 0:
 <p>
 **Elipse**: Parecida al circulo, pero con radios diferentes en los ejes `x` y `y`.
 
-```python
+```
 elif eq == 1:
     # Elipse
     x = 220 * np.cos(t)
@@ -55,7 +55,6 @@ elif eq == 1:
 
 <p>
 - **Espiral Logarítmica**: A medida que `t` aumenta, `r` crece de forma exponencial, produciendo una espiral.
-
 ```
 elif eq == 2:
     # Espiral logaritmica
@@ -63,13 +62,14 @@ elif eq == 2:
     x = r * np.cos(t)
     y = r * np.sin(t)
 ```
+
 ![Espiral Logaritmica](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/espiral%20logaritmica.png?raw=true)
 </p>
 
 <p>
 **Lemniscata** : una figura en forma de ∞ o infinito:
   
-  ```python
+  ```
   elif eq == 3:
       x = 180 * np.cos(t) / (1 + np.sin(t)**2)
       y = 180 * np.sin(t) * np.cos(t) / (1 + np.sin(t)**2)
@@ -95,7 +95,7 @@ Son curvas parametrizadas que se generan con un parámetro k que controla el num
 </p>
 
 <p>
-- **Cardioide **:
+- **Cardioide**:
 Un cardioide es  una curva en forma de corazon que se genera usando una formula paramétrica específica La forma es simetrica y característica por su unico bucle.
 
   ```
@@ -104,8 +104,6 @@ Un cardioide es  una curva en forma de corazon que se genera usando una formula 
       y = 180 * (1 - np.cos(t)) * np.sin(t)
   ```
 ![cardioide](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/cardioide.png?raw=true)
-
-
 </p>
 
 
@@ -134,7 +132,7 @@ Un cardioide es  una curva en forma de corazon que se genera usando una formula 
     elif eq == 8:
     ```
   ![Espiral de Arquimedes](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/espiral.png?raw=true)
-  </p>
+   </p>
 
   <p>
   **Asteroide**
@@ -150,11 +148,12 @@ Un cardioide es  una curva en forma de corazon que se genera usando una formula 
   <p>
     **Hiperbola**
     Una hiperbola es una curva simetrica que tiene dos ramas que se alejan indefinidamente. 
+
     ```
      x = 180 * np.sinh(t)
      y = 130 * np.cosh(t)
      ```
-
+     
      ![Hiperbola](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/hiperbolaa.png?raw=true)
   </p>
 
