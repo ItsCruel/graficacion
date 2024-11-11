@@ -1,5 +1,6 @@
-Practica Matriz Convolucion
-INTRODUCCION
+## Practica Matriz Convolucion
+
+### INTRODUCCION
 En esta practica lo que buscamos es aplicar la matriz convolucion que se encargara de aplicar un suavizadoen la imagen , que en este caso es espartan.
 
 Como paso 0 importamos las librerias correspondientes
@@ -116,9 +117,8 @@ cv.waitKey(0)
 cv.destroyAllWindows()
 ```
 
-Mostrando resultados 
+## Mostrando resultados 
 
 ![Espartan_Original](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/espartan.jpg?raw=true)
-<p>
+
 ![Espartan_Convolucion](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/suavizado_convolucion.png?raw=true)
-</p>
