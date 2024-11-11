@@ -121,7 +121,7 @@ if cv2.waitKey(30) & 0xFF == ord('q'):
     break
 ```
 ### Imagen del Resultado
-![.]()
+![.](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/ImagenColicion.png?raw=true)
 pelota Colicion
-![.]()
+![.](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/ImagenColicion2.png?raw=true)
 
