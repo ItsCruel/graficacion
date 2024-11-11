@@ -9,8 +9,15 @@ Como parte 0 importamos las librerias
 import cv2
 import numpy as np
 ```
-
-
+###  Comprobacion de camara
+comprobamos que exista una camara si no el programa marcara error 
+```
+while True:
+    # caamara
+    ret, frame = video.read()
+    if not ret:
+        break
+```
 ### 1.Abrimos la camara,  buscamos la primera camara que aparezca con el 0.
 
 ```python
@@ -91,4 +98,5 @@ solo queda mostrar el resultado . La imagen final que combina las areas en rojo 
 cv2.imshow('Color resaltado', resultado)
 ```
 
-Mostrando resultado
+### Mostrando resultado
+![Np Where Video](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/NP%20Where%20video.png?raw=true¨)
