@@ -114,4 +114,4 @@ Texto del sector: cv.putText` muestra el texto `"Sector: X"` en la parte superio
 ```
 
 ### Mostrando Resultados 
-![Pelotita Con Sectores]()
+![Pelotita Con Sectores](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/ImagenPelotitaConSectores.png?raw=true)
