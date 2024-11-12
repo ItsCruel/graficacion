@@ -1,4 +1,7 @@
-## Practica PelotaCon Selectores
+# Practica PelotaCon Selectores
+
+## Introduccion
+Este codigo crea una animacion sencilla donde una pelotita se mueve y rebota en los bordes de la ventana, y muestra en que sector se encuentra.
 
 ### Importamos las  bibliotecas
 paso 0 importamos las librerias numpy y cv
