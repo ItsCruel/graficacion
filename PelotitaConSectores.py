@@ -8,7 +8,7 @@ ancho, alto = 640, 480
 cv.namedWindow("Animacion", cv.WINDOW_AUTOSIZE)
 
 # posicion inicial de la pelota
-pos_pelota = np.array([100, 100])
+pos_pelota = np.array([100, 100]) 
 radio_pelota = 20
 velocidad = np.array([5, 3])
 

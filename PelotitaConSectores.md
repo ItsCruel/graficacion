@@ -98,3 +98,20 @@ Texto del sector: cv.putText` muestra el texto `"Sector: X"` en la parte superio
         velocidad[1] = -velocidad[1]
 ```
 
+ **Actualizacion de la posicion** :  La posicion de la pelota (`pos_pelota`) se incrementa en cada bucle, sumando el valor de `velocidad`.
+ **Colision con los bordes**:  Se verifica si la pelota toca alguno de los bordes y, si es asi, se invierte la direccion .
+
+
+### Mostrar la imagen y salida
+
+```python
+    # Mostrar la imagen en la ventana
+    cv.imshow("Animacion", fotograma)
+
+    # Salir al presionar 'Esc'
+    if cv.waitKey(1) & 0xFF == 27:
+        break
+```
+
+### Mostrando Resultados 
+![Pelotita Con Sectores]()
