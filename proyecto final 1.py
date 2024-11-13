@@ -15,7 +15,7 @@ practica con pelotita al agarrarla la podemos mover
 
 con esta practica podemos modificar el proyecto 1 , podemos girar modificar un objeto 
 
-Nosotros modificamos los controles movimiento (con gestos de la mano)
+Nosotros modificamos los controles movimiento (con gestos de la mano) o patrones de movimiento
 
 por medio de los puntos verdes nos podemos ayudar
-
+ddd

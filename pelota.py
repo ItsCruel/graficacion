@@ -40,7 +40,7 @@ while True:
 
     if pos_pelota[1] - radio_pelota <= 0 or pos_pelota[1] + radio_pelota >= alto:
         velocidad[1] = -velocidad[1]
-        
+         
         # Cambiar a color aleatorio solo si no ha rebotado
         if not ha_rebotado:
             color_pelota = (np.random.randint(0, 256), np.random.randint(0, 256), np.random.randint(0, 256))
