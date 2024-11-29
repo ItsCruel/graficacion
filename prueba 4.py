@@ -4,19 +4,19 @@ from OpenGL.GLU import gluPerspective, gluLookAt, gluNewQuadric, gluSphere, gluC
 import sys
 
 def init():
-    """configuracion inicial """
+    """Configuración inicial de OpenGL"""
     glClearColor(0.5, 0.8, 1.0, 1.0)  # Fondo azul cielo
     glEnable(GL_DEPTH_TEST)           # Activar prueba de profundidad
 
-    # Configuracion de la perspectiva
+    # Configuración de la perspectiva
     glMatrixMode(GL_PROJECTION)
-    gluPerspective(60, 1, 6, 100.0)  # Campo de vision más amplio
+    gluPerspective(60, 1, 6, 100.0)  # Campo de visión más amplio
     glMatrixMode(GL_MODELVIEW)
 
 def draw_cube():
-    """(base de la casa)"""
+    """Dibuja el cubo (base de la casa)"""
     glBegin(GL_QUADS)
-    glColor3f(0.8, 0.5, 0.2)  
+    glColor3f(0.8, 0.5, 0.2)  # Marrón para todas las caras
 
     # Frente
     glVertex3f(-1, 0, 1)
@@ -24,7 +24,7 @@ def draw_cube():
     glVertex3f(1, 5, 1)
     glVertex3f(-1, 5, 1)
 
-    # Atras
+    # Atrás
     glVertex3f(-1, 0, -1)
     glVertex3f(1, 0, -1)
     glVertex3f(1, 5, -1)
@@ -43,14 +43,14 @@ def draw_cube():
     glVertex3f(1, 5, -1)
 
     # Arriba
-    glColor3f(0.9, 0.6, 0.3) 
+    glColor3f(0.9, 0.6, 0.3)  # Color diferente para el techo
     glVertex3f(-1, 5, -1)
     glVertex3f(1, 5, -1)
     glVertex3f(1, 5, 1)
     glVertex3f(-1, 5, 1)
 
     # Abajo
-    glColor3f(0.6, 0.4, 0.2) 
+    glColor3f(0.6, 0.4, 0.2)  # Suelo más oscuro
     glVertex3f(-1, 0, -1)
     glVertex3f(1, 0, -1)
     glVertex3f(1, 0, 1)
@@ -58,9 +58,9 @@ def draw_cube():
     glEnd()
 
 def draw_roof():
-    """Dibuja el techo"""
+    """Dibuja el techo (pirámide)"""
     glBegin(GL_TRIANGLES)
-    glColor3f(0.9, 0.1, 0.1) 
+    glColor3f(0.9, 0.1, 0.1)  # Rojo brillante
 
     # Frente
     glVertex3f(-1, 5, 1)
@@ -84,9 +84,9 @@ def draw_roof():
     glEnd()
 
 def draw_ground():
-    """ plano para representar el suelo"""
+    """Dibuja un plano para representar el suelo o calle"""
     glBegin(GL_QUADS)
-    glColor3f(0.3, 0.3, 0.3)  
+    glColor3f(0.3, 0.3, 0.3)  # Gris oscuro para la calle
 
     # Coordenadas del plano
     glVertex3f(-20, 0, 20)
@@ -96,7 +96,7 @@ def draw_ground():
     glEnd()
 
 def draw_snowman():
-    """Dibuja un muneco de nieve"""
+    """Dibuja un muñeco de nieve"""
     # Cuerpo
     glColor3f(1, 1, 1)
     draw_sphere(0.5, 0, 0.5, 0)     # Base
@@ -105,10 +105,10 @@ def draw_snowman():
 
     # Ojos
     glColor3f(0, 0, 0)
-    draw_sphere(0.03, -0.05, 1.25, 0.1)  
-    draw_sphere(0.03, 0.05, 1.25, 0.1)   
+    draw_sphere(0.03, -0.05, 1.25, 0.1)  # Ojo izquierdo
+    draw_sphere(0.03, 0.05, 1.25, 0.1)   # Ojo derecho
 
-    # Nariz 
+    # Nariz (cono)
     glColor3f(1, 0.5, 0)  # Naranja
     draw_cone(0.05, 0.1, 0, 1.2, 0.15)
 
@@ -128,7 +128,7 @@ def draw_cone(base, height, x, y, z):
     glPopMatrix()
 
 def draw_house():
-    """Dibuja una casa"""
+    """Dibuja una casa (base + techo)"""
     draw_cube()
     draw_roof()
 
@@ -137,10 +137,10 @@ def draw_scene():
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glLoadIdentity()
 
-    # camara
-    gluLookAt(10, 8, 15,  
-              0, 0, 0,   
-              0, 1, 0)    
+    # Configuración de la cámara
+    gluLookAt(10, 8, 15,  # Posición de la cámara
+              0, 0, 0,    # Punto al que mira
+              0, 1, 0)    # Vector hacia arriba
 
     # Dibujar el suelo
     draw_ground()
@@ -159,7 +159,7 @@ def draw_scene():
         glPopMatrix()
 
         glPushMatrix()
-        glTranslatef(pos[0] + 1.5, 0, pos[2])  
+        glTranslatef(pos[0] + 1.5, 0, pos[2])  # Posición al lado de la casa
         draw_snowman()
         glPopMatrix()
 
