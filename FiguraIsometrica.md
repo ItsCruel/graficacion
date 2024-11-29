@@ -110,5 +110,5 @@ while True:
 
 
 ### Mostrando Resultado
-![FiguraIsometrica]()
+![FiguraIsometrica](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/FiguraIsometrica.png?raw=true)
 
