@@ -87,6 +87,6 @@ if (cv.waitKey(1) & 0xff) == 27:
 ```
 
 ### Mostrando Resultados
-![RedConPelotita]()
+![RedConPelotita](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/ImagenFlujoOptico.png?raw=true)
 
 
