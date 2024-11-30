@@ -98,7 +98,7 @@ cv.destroyAllWindows()
 ```
 
 ### Mostrando Resultados
-![Imagen Original]()
-![Traslacion]()
-![Rotacion]()
-![Escalamiento]()
+![Imagen Original](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/halo2.png?raw=true)
+![Traslacion](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/imagentrasladada.png?raw=true)
+![Rotacion](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/imagenrotada.png?raw=true)
+![Escalamiento](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/imagenescalada.png?raw=true)
