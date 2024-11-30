@@ -77,7 +77,7 @@ cv.destroyAllWindows()
 Como parte final se muestran las ventanas de la imagen original y la imagen escalada con bordes detectados. al final el programa espera que escribas 0 o Esc para cerrar las ventanas y finalizar el programa. 
 ***Monstrando Resultados***
 por ultimo quede mostrar el resultado de la imagen original y aplicando la matriz sobel 
-<p>
+
 ![Espartan_Original](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/espartan.jpg?raw=true)
-</p>
+
 ![Espartan_MatrizSobel](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/ddd.png?raw=true)
