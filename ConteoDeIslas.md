@@ -120,6 +120,6 @@ Como conclusion el resultado fue erroneo y no logre la deteccion de border con e
 
 ### Mostrando Resultados
 
-![]()
-![]()
+![Islas](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/conteodeIslas1.png?raw=true)
+![islas contadas](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/conteodeislas2.png?raw=true)
 
