@@ -96,6 +96,6 @@ if cv.waitKey(1) & 0xFF == 27:
 ```
 
 ### Mostrando Resultados
-![Filtro ojos]()
+![Filtro ojos](https://github.com/ItsCruel/graficacion/blob/main/imagenes%20markdown/ojosprueba.png?raw=true)
 
 
