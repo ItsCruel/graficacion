@@ -6,7 +6,7 @@ import numpy as np
 import threading
 import time
 
-# Parámetros para el flujo óptico
+# Parametros para el flujo optico
 lk_params = dict(winSize=(15, 15), maxLevel=2,
                  criteria=(cv.TERM_CRITERIA_EPS | cv.TERM_CRITERIA_COUNT, 10, 0.03))
 
@@ -26,9 +26,9 @@ if not ret:
     raise RuntimeError("No se pudo iniciar la cámara.")
 prev_gray = cv.cvtColor(first_frame, cv.COLOR_BGR2GRAY)
 
-# Posición inicial del punto de seguimiento
+# Posiciones iniciales de los puntos de seguimiento
 ball_pos = np.array([[300, 300]], dtype=np.float32).reshape(-1, 1, 2)
-
+scale_ball_pos = np.array([[500, 300]], dtype=np.float32).reshape(-1, 1, 2)
 
 area_margin = 50  
 frame_width, frame_height = first_frame.shape[1], first_frame.shape[0]
@@ -79,8 +79,6 @@ def draw_snowman():
     # Nariz
     glColor3f(1, 0.5, 0)
     draw_cone(0.05, 0.2, 0, 2.2, 0.5)
-
-# Detección de gestos y control del muñeco
 def detect_and_control_gestures(new_pos, prev_pos):
     global rotation_angle, scaling_factor, translation_x, translation_y, last_action_time
 
@@ -93,48 +91,40 @@ def detect_and_control_gestures(new_pos, prev_pos):
     # Movimiento vertical
     translation_y -= dy / 100.0
 
-    # Si la mano se mueve mucho hacia arriba, escalar hacia arriba
-    if dy < -5:
-        scaling_factor += 0.01
-
-    # Si la mano se mueve mucho hacia abajo, escalar hacia abajo
-    elif dy > 5:
-        scaling_factor -= 0.01
-
-    # Si la mano se mueve lateralmente rápido, activar rotación
+    # Si la mano se mueve lateralmente rapido, activar rotacion
     if abs(dx) > 5:
         rotation_angle += dx / 5.0
 
-    # Actualizar el tiempo de la última acción
+    # Actualizar el tiempo de la ultima accion
     if abs(dx) > 1 or abs(dy) > 1:
         last_action_time = time.time()
 
-# Detectar si la bolita está en las esquinas y rotar
-def detect_corner_and_rotate(new_pos):
-    global rotation_angle
+def detect_and_control_scaling(new_pos, prev_pos):
+    global scaling_factor, last_action_time
 
-    x, y = new_pos.ravel()
+    dy = new_pos[0, 0, 1] - prev_pos[0, 0, 1]
 
-    # Detectar si la bolita está en una esquina
-    in_top_left = (x < area_margin * 2 and y < area_margin * 2)
-    in_top_right = (x > frame_width - area_margin * 2 and y < area_margin * 2)
-    in_bottom_left = (x < area_margin * 2 and y > frame_height - area_margin * 2)
-    in_bottom_right = (x > frame_width - area_margin * 2 and y > frame_height - area_margin * 2)
+    # Escalar hacia arriba o hacia abajo
+    if dy < -5:
+        scaling_factor += 0.01
+    elif dy > 5:
+        scaling_factor -= 0.01
 
-    if in_top_left or in_top_right or in_bottom_left or in_bottom_right:
-        rotation_angle += 2  # Rotar suavemente
+    # Actualizar el tiempo de la ultima accion
+    if abs(dy) > 1:
+        last_action_time = time.time()
 
-# Reiniciar posiciones de la bolita y el muñeco
+# Reiniciar posiciones de las bolitas y el muñeco
 def reset_ball_and_transformations():
-    global ball_pos, translation_x, translation_y, scaling_factor, rotation_angle, last_action_time
+    global ball_pos, scale_ball_pos, translation_x, translation_y, scaling_factor, rotation_angle, last_action_time
     translation_x, translation_y, translation_z = 0.0, 0.0, -8.0
     scaling_factor = 1.0
     rotation_angle = 0.0
     ball_pos = np.array([[300, 300]], dtype=np.float32).reshape(-1, 1, 2)
+    scale_ball_pos = np.array([[500, 300]], dtype=np.float32).reshape(-1, 1, 2)
     last_action_time = time.time()
-
 def control_window():
-    global ball_pos, prev_gray, last_action_time
+    global ball_pos, scale_ball_pos, prev_gray, last_action_time, rotation_angle
 
     while True:
         ret, frame = cap.read()
@@ -144,29 +134,47 @@ def control_window():
         frame = cv.flip(frame, 1)
         gray_frame = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
+        # Calcular flujo optico para ambas bolitas
         new_ball_pos, st, err = cv.calcOpticalFlowPyrLK(prev_gray, gray_frame, ball_pos, None, **lk_params)
+        new_scale_ball_pos, st, err = cv.calcOpticalFlowPyrLK(prev_gray, gray_frame, scale_ball_pos, None, **lk_params)
 
         if new_ball_pos is not None:
-            # Limitar la posición de la pelotita dentro del área de control
+            # Limitar la posicion de la bolita de control
             x, y = new_ball_pos.ravel()
             x = max(area_margin, min(x, frame_width - area_margin))
             y = max(area_margin, min(y, frame_height - area_margin))
             new_ball_pos[0, 0, :] = [x, y]
 
             detect_and_control_gestures(new_ball_pos, ball_pos)
-            detect_corner_and_rotate(new_ball_pos)
             ball_pos = new_ball_pos
 
-            # Dibujar la pelotita en su nueva posición
+            # Dibujar la bolita de control
             cv.circle(frame, (int(x), int(y)), 20, (0, 255, 0), -1)
+
+            # Detectar si la bola verde esta en la esquina inferior derecha
+            if x > frame_width - area_margin - 50 and y > frame_height - area_margin - 50:
+                rotation_angle += 2  # Incrementar el ángulo para rotación automática
+
+        if new_scale_ball_pos is not None:
+            # Limitar la posicion de la bolita de escalado
+            x, y = new_scale_ball_pos.ravel()
+            x = max(area_margin, min(x, frame_width - area_margin))
+            y = max(area_margin, min(y, frame_height - area_margin))
+            new_scale_ball_pos[0, 0, :] = [x, y]
+
+            detect_and_control_scaling(new_scale_ball_pos, scale_ball_pos)
+            scale_ball_pos = new_scale_ball_pos
+
+            # Dibujar la bolita de escalado
+            cv.circle(frame, (int(x), int(y)), 20, (255, 0, 0), -1)
 
         prev_gray = gray_frame.copy()
 
-        # Dibujar un rectángulo para área de control
+        # Dibujar un rectangulo para area de control
         cv.rectangle(frame, (area_margin, area_margin), 
                      (frame_width - area_margin, frame_height - area_margin), (0, 0, 255), 2)
 
-        # Verificar si es necesario reiniciar las transformaciones y la posición de la bolita
+        # Verificar si es necesario reiniciar las transformaciones y la posicion de las bolitas
         if time.time() - last_action_time > reset_time_threshold:
             reset_ball_and_transformations()
 

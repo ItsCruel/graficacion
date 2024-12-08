@@ -1,128 +1,99 @@
-import glfw
 from OpenGL.GL import *
-from OpenGL.GLU import gluPerspective, gluLookAt, gluNewQuadric, gluCylinder, gluSphere
+from OpenGL.GLU import *
+from OpenGL.GLUT import *
 from PIL import Image
-import sys
 
-def init():
-    """Configuración inicial de OpenGL"""
-    glClearColor(0.5, 0.8, 1.0, 1.0)  # Fondo azul cielo
-    glEnable(GL_DEPTH_TEST)           # Activar prueba de profundidad
-    glEnable(GL_LIGHTING)             # Activar luces
-    glEnable(GL_LIGHT0)               # Luz básica
-    glEnable(GL_COLOR_MATERIAL)       # Materiales de color para reflejar luz
-    glShadeModel(GL_SMOOTH)           # Sombreado suave
-    glEnable(GL_TEXTURE_2D)           # Activar texturas
 
-    # Configuración de la perspectiva
-    glMatrixMode(GL_PROJECTION)
-    gluPerspective(60, 1.0, 0.1, 100.0)  # Campo de visión más amplio
-    glMatrixMode(GL_MODELVIEW)
+def load_texture(image_path):
+    # Generar y enlazar una textura
+    texture_id = glGenTextures(1)
+    glBindTexture(GL_TEXTURE_2D, texture_id)
+    
+    # Cargar imagen desde el archivo
+    img = Image.open(image_path)
+    img = img.convert("RGB")  # Convertir a RGB explícitamente
+    img_data = img.tobytes("raw", "RGB", 0, -1)
+    
+    # Configurar la textura
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, img.width, img.height, 0,
+    GL_RGB, GL_UNSIGNED_BYTE, img_data)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT)
+    return texture_id
 
-    # Luz ambiental y difusa
-    light_pos = [10, 10, 10, 1.0]  # Posición de la luz
-    light_ambient = [0.3, 0.3, 0.3, 1.0]
-    light_diffuse = [0.8, 0.8, 0.8, 1.0]
+def init_lighting():
+    # Configuración de iluminación
+    glEnable(GL_LIGHTING)  # Habilitar iluminación
+    glEnable(GL_LIGHT0)  # Activar la luz 0
+    glEnable(GL_COLOR_MATERIAL)  # Habilitar el material basado en colores
+
+    # Configuración de la luz
+    light_pos = [1.0, 1.0, 1.0, 0.0]  # Posición de la luz
+    light_ambient = [0.2, 0.2, 0.2, 1.0]  # Luz ambiental
+    light_diffuse = [0.8, 0.8, 0.8, 1.0]  # Luz difusa
+    light_specular = [1.0, 1.0, 1.0, 1.0]  # Luz especular
+
     glLightfv(GL_LIGHT0, GL_POSITION, light_pos)
     glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient)
     glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse)
+    glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular)
 
-def load_texture(filename):
-    """Carga una textura desde un archivo de imagen"""
-    img = Image.open(filename)
-    img_data = img.tobytes("raw", "RGB", 0, -1)
+    # Configuración del material
+    material_specular = [1.0, 1.0, 1.0, 1.0]
+    material_shininess = [50.0]
+    glMaterialfv(GL_FRONT, GL_SPECULAR, material_specular)
+    glMaterialfv(GL_FRONT, GL_SHININESS, material_shininess)
 
-    texture_id = glGenTextures(1)
-    glBindTexture(GL_TEXTURE_2D, texture_id)
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
-
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, img.width, img.height, 0, GL_RGB, GL_UNSIGNED_BYTE, img_data)
-
-    return texture_id
-
-def draw_trunk(texture_id):
-    """Dibuja el tronco del árbol como un cilindro con textura"""
-    glPushMatrix()
-    glBindTexture(GL_TEXTURE_2D, texture_id)  # Vincula la textura
-    glColor3f(1.0, 1.0, 1.0)  # Color blanco para mostrar la textura
-    glTranslatef(0.0, 0.0, 0.0)
-    glRotatef(-90, 1, 0, 0)  # Orienta el cilindro verticalmente
-    quadric = gluNewQuadric()
-    gluQuadricTexture(quadric, GL_TRUE) # type: ignore
-    gluCylinder(quadric, 0.3, 0.3, 2.0, 32, 32)
-    glPopMatrix()
-
-def draw_foliage(texture_id):
-    """Dibuja las hojas del árbol como una esfera con textura"""
-    glPushMatrix()
-    glBindTexture(GL_TEXTURE_2D, texture_id)  # Vincula la textura
-    glColor3f(1.0, 1.0, 1.0)  # Color blanco para mostrar la textura
-    glTranslatef(0.0, 2.0, 0.0)
-    quadric = gluNewQuadric()
-    gluQuadricTexture(quadric, GL_TRUE) # type: ignore
-    gluSphere(quadric, 1.0, 32, 32)
-    glPopMatrix()
-
-def draw_ground(texture_id):
-    """Dibuja un plano para representar el suelo con textura"""
-    glBindTexture(GL_TEXTURE_2D, texture_id)  # Vincula la textura
-    glBegin(GL_QUADS)
-    glColor3f(1.0, 1.0, 1.0)  # Color blanco para mostrar la textura
-    glTexCoord2f(0.0, 0.0); glVertex3f(-10, 0, 10)
-    glTexCoord2f(1.0, 0.0); glVertex3f(10, 0, 10)
-    glTexCoord2f(1.0, 1.0); glVertex3f(10, 0, -10)
-    glTexCoord2f(0.0, 1.0); glVertex3f(-10, 0, -10)
-    glEnd()
-
-def draw_tree(trunk_texture, foliage_texture, ground_texture):
-    """Dibuja un árbol completo"""
+def display():
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+    glEnable(GL_TEXTURE_2D)
+    
+    # Crear un objeto cuadrático
+    quadric = gluNewQuadric()
+    gluQuadricTexture(quadric, GL_TRUE)  # Habilitar texturas para el objeto
+    gluQuadricNormals(quadric, GLU_SMOOTH)
+    
+    glBindTexture(GL_TEXTURE_2D, texture_id)  # Enlazar la textura cargada
+    
+    # Dibujar la esfera pequeña
+    glPushMatrix()
+    glColor3f(1.0, 1.0, 1.0)  #  no altere la textura
+    glTranslatef(0.0, 0.0, -2.0)  # Mover la esfera para que sea visible
+    gluSphere(quadric, 0.5, 32, 32)  # Esfera con radio 0.5
+    glPopMatrix()
+    
+    gluDeleteQuadric(quadric)  # Liberar el recurso del cuadrático
+    glDisable(GL_TEXTURE_2D)
+    glutSwapBuffers()
+
+def reshape(width, height):
+    if height == 0:
+        height = 1
+    aspect = width / height
+    glViewport(0, 0, width, height)
+    glMatrixMode(GL_PROJECTION)
+    glLoadIdentity()
+    gluPerspective(45.0, aspect, 0.1, 50.0)
+    glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()
 
-    # Configuración de la cámara
-    gluLookAt(4, 3, 8,  # Posición de la cámara
-              0, 1, 0,  # Punto al que mira
-              0, 1, 0)  # Vector hacia arriba
-
-    draw_ground(ground_texture)  # Dibuja el suelo
-    draw_trunk(trunk_texture)   # Dibuja el tronco
-    draw_foliage(foliage_texture) # Dibuja las hojas
-
-    glfw.swap_buffers(window)
-
 def main():
-    global window
-
-    # Inicializar GLFW
-    if not glfw.init():
-        sys.exit()
+    global texture_id
+    glutInit()
+    glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH)
+    glutInitWindowSize(800, 600)
+    glutCreateWindow("Esfera con textura e iluminación")
     
-    # Crear ventana de GLFW
-    width, height = 800, 600
-    window = glfw.create_window(width, height, "Árbol 3D con Texturas y Luz", None, None)
-    if not window:
-        glfw.terminate()
-        sys.exit()
-
-    glfw.make_context_current(window)
-    glViewport(0, 0, width, height)
-    init()
-
-    # Carga de texturas
-    trunk_texture = load_texture("tronco.jpg")      # Textura para el tronco
-    foliage_texture = load_texture("hojas.jpg") # Textura para las hojas
-    ground_texture = load_texture("suelo.jpg")   # Textura para el suelo
-
-    # Bucle principal
-    while not glfw.window_should_close(window):
-        draw_tree(trunk_texture, foliage_texture, ground_texture)
-        glfw.poll_events()
-
-    glfw.terminate()
+    glEnable(GL_DEPTH_TEST)  # Habilitar prueba de profundidad
+    texture_id = load_texture("trunk.jpg")
+    
+    init_lighting()  # Inicializar iluminación
+    
+    glutDisplayFunc(display)
+    glutReshapeFunc(reshape)
+    glutMainLoop()
 
 if __name__ == "__main__":
-    main()
+ main()
