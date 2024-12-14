@@ -1,6 +1,8 @@
+import math
+import random
 import glfw
 from OpenGL.GL import *
-from OpenGL.GLU import gluNewQuadric, gluSphere, gluPerspective, gluCylinder
+from OpenGL.GLU import * 
 import cv2 as cv
 import numpy as np
 import threading
@@ -274,10 +276,30 @@ def draw_pine_tree(x=0, y=0, z=0):
     draw_cone(base=0.3, height=0.4, x=x, y=y + 1.1, z=z, color=(0.0, 0.7, 0.0))
 
 def draw_fawn(x=0, y=0, z=0):
-    draw_sphere(radius=0.3, x=x, y=y + 0.2, z=z, color=(0.6, 0.4, 0.2))
-    draw_sphere(radius=0.15, x=x, y=y + 0.4, z=z, color=(0.6, 0.4, 0.2))
-    draw_cylinder(base_radius=0.05, top_radius=0.05, height=0.2, x=x - 0.1, y=y, z=z, color=(0.6, 0.4, 0.2))
-    draw_cylinder(base_radius=0.05, top_radius=0.05, height=0.2, x=x + 0.1, y=y, z=z, color=(0.6, 0.4, 0.2))
+    # Cuerpo
+    draw_sphere(radius=0.4, x=x, y=y + 0.3, z=z, color=(0.6, 0.4, 0.2)) 
+    draw_sphere(radius=0.2, x=x, y=y + 0.7, z=z, color=(0.6, 0.4, 0.2))  
+
+    # Patas
+    draw_cylinder(base_radius=0.05, top_radius=0.05, height=0.3, x=x - 0.15, y=y, z=z - 0.1, color=(0.6, 0.4, 0.2))  # Pata delantera izquierda
+    draw_cylinder(base_radius=0.05, top_radius=0.05, height=0.3, x=x + 0.15, y=y, z=z - 0.1, color=(0.6, 0.4, 0.2))  # Pata delantera derecha
+    draw_cylinder(base_radius=0.05, top_radius=0.05, height=0.3, x=x - 0.15, y=y, z=z + 0.1, color=(0.6, 0.4, 0.2))  # Pata trasera izquierda
+    draw_cylinder(base_radius=0.05, top_radius=0.05, height=0.3, x=x + 0.15, y=y, z=z + 0.1, color=(0.6, 0.4, 0.2))  # Pata trasera derecha
+
+    # Cola
+    draw_sphere(radius=0.05, x=x, y=y + 0.4, z=z + 0.2, color=(0.6, 0.4, 0.2))
+
+    # Orejas
+    draw_cone(base=0.05, height=0.1, x=x - 0.1, y=y + 0.9, z=z - 0.05, color=(0.6, 0.4, 0.2))  # Oreja izquierda
+    draw_cone(base=0.05, height=0.1, x=x + 0.1, y=y + 0.9, z=z - 0.05, color=(0.6, 0.4, 0.2))  # Oreja derecha
+
+    # Cuernos pequeños
+    draw_cylinder(base_radius=0.02, top_radius=0.02, height=0.1, x=x - 0.05, y=y + 0.85, z=z, color=(0.4, 0.2, 0.1))  # Cuerno izquierdo
+    draw_cylinder(base_radius=0.02, top_radius=0.02, height=0.1, x=x + 0.05, y=y + 0.85, z=z, color=(0.4, 0.2, 0.1))  # Cuerno derecho
+
+    # Ojos
+    draw_sphere(radius=0.03, x=x - 0.08, y=y + 0.75, z=z + 0.18, color=(0, 0, 0))  # Ojo izquierdo
+    draw_sphere(radius=0.03, x=x + 0.08, y=y + 0.75, z=z + 0.18, color=(0, 0, 0))  # Ojo derecho
 
 def draw_bear(x=0, y=0, z=0):
     scale = 1/3 
@@ -334,8 +356,122 @@ def draw_dog(x=0, y=0, z=0):
     draw_cylinder(base_radius=0.05, top_radius=0.02, height=0.2, x=x + 0.15, y=y, z=z + 0.15, color=(0.8, 0.6, 0.3))  
 
 
+def draw_bat(x=0, y=0, z=0):
+
+    # Dibujar el cuerpo del murcielago
+    glColor3f(0.1, 0.1, 0.1)   
+    glPushMatrix()
+    glTranslatef(x, y, z)
+    draw_sphere(radius=0.3, x=0, y=0, z=0, color=(0.1, 0.1, 0.1))
+    
+    # alas 
+    glBegin(GL_TRIANGLES)
+    glColor3f(0.1, 0.1, 0.1)
+    # Ala izquierda
+    glVertex3f(-0.5, 0.1, 0.0)
+    glVertex3f(-1.2, 0.5, 0.0)
+    glVertex3f(-0.5, -0.1, 0.0)
+    # Ala derecha
+    glVertex3f(0.5, 0.1, 0.0)
+    glVertex3f(1.2, 0.5, 0.0)
+    glVertex3f(0.5, -0.1, 0.0)
+    glEnd()
+    glPopMatrix()
+
+def draw_moving_bats():
+    global bat_offset
+    bat_positions = [
+        (2, 7, -3), (-4, 8, 5), (6, 9, -6), (-7, 10, 2),
+        (5, 11, -8), (-8, 12, 3)
+    ]
+    for i, (x, y, z) in enumerate(bat_positions):
+        # Desplazamiento horizontal y oscilacion 
+        x_moving = x + bat_offset
+        y_oscillating = y + math.sin(bat_offset + i) * 0.5
+        # Logica para que los murcielagos reaparezcan a los limites
+        if x_moving > 20:
+            x_moving -= 40
+        elif x_moving < -20:
+            x_moving += 40
+        draw_bat(x_moving, y_oscillating, z)
+
+    # Incrementar  movimiento
+    bat_offset += 0.1  # velocidad
+    if bat_offset > 20:
+        bat_offset -= 40  
+        
+        
+balloon_positions = [{'x': -5, 'y': -10}, {'x': 0, 'y': -20}, {'x': 5, 'y': -15}]
+balloon_speed = 0.05  # Velocidad 
+
+def draw_spheres(radius, slices=20, stacks=20):
+    quadric = gluNewQuadric()
+    gluSphere(quadric, radius, slices, stacks)
+
+def draw_cubes(size):
+    half = size / 2
+    glBegin(GL_QUADS)
+    # Frente
+    glVertex3f(-half, -half, half)
+    glVertex3f(half, -half, half)
+    glVertex3f(half, half, half)
+    glVertex3f(-half, half, half)
+    # Atrás
+    glVertex3f(-half, -half, -half)
+    glVertex3f(half, -half, -half)
+    glVertex3f(half, half, -half)
+    glVertex3f(-half, half, -half)
+    # Izquierda
+    glVertex3f(-half, -half, -half)
+    glVertex3f(-half, -half, half)
+    glVertex3f(-half, half, half)
+    glVertex3f(-half, half, -half)
+    # Derecha
+    glVertex3f(half, -half, -half)
+    glVertex3f(half, -half, half)
+    glVertex3f(half, half, half)
+    glVertex3f(half, half, -half)
+    # Arriba
+    glVertex3f(-half, half, -half)
+    glVertex3f(half, half, -half)
+    glVertex3f(half, half, half)
+    glVertex3f(-half, half, half)
+    # Abajo
+    glVertex3f(-half, -half, -half)
+    glVertex3f(half, -half, -half)
+    glVertex3f(half, -half, half)
+    glVertex3f(-half, -half, half)
+    glEnd()
+
+def draw_balloon(x, y):
+    glPushMatrix()
+    glTranslatef(x, y, 0)
+    # Dibujar la esfera 
+    glColor3f(1.0, 0.0, 0.0) 
+    draw_spheres(1.0)
+
+    # Dibujar la canasta 
+    glColor3f(0.5, 0.3, 0.0)  
+    glTranslatef(0, -1.5, 0)
+    draw_cubes(0.5)
+    glPopMatrix()
+
+def update_positions():
+    for balloon in balloon_positions:
+        balloon['y'] += balloon_speed  #verticalmente
+        if balloon['y'] > 10:  # Reaparecer
+            balloon['y'] = -10
+       
+        
+
+# Variables globales para el movimientos
+cloud_offset = 0.0
+bat_offset = 0.0
+
+
 def draw_forest():
-    global translation_x, translation_y, translation_z, scaling_factor, rotation_angle
+    global translation_x, translation_y, translation_z, scaling_factor, rotation_angle, cloud_offset
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glLoadIdentity()
     glTranslatef(translation_x, translation_y, translation_z)
@@ -350,7 +486,37 @@ def draw_forest():
     glVertex3f(20, 0, -20)
     glVertex3f(-20, 0, -20)
     glEnd()
+    
+    # murcielagos movimiento
+    draw_moving_bats()
+    
+     # Dibujar globos en sus posiciones
+    for balloon in balloon_positions:
+        draw_balloon(balloon['x'], balloon['y'])
 
+    # Actualizar posiciones de los globos
+    update_positions()
+    
+    # Dibujar nubes
+    cloud_positions = [
+        (3, 8, 3), (-4, 10, -5), (5, 9, -8), (-8, 12, 4),
+        (6, 11, 7), (-10, 13, -3), (0, 15, 5), (-5, 14, -7)
+    ]
+    for i, (x, y, z) in enumerate(cloud_positions):
+        # Ajustar la posición X de las nubes
+        x_moving = x + cloud_offset
+        # s nubes reaparezcan 
+        if x_moving > 20:
+            x_moving -= 40
+        elif x_moving < -20:
+            x_moving += 40
+        draw_cloud(x_moving, y, z)  # de dibujo de la nube
+
+    cloud_offset += 0.05  # Ajusta la velocidad del movimiento
+    if cloud_offset > 20:
+        cloud_offset -= 40  # Evitar valores excesivos 
+
+    
     # arboles
     for x in range(-10, 11, 5):
         for z in range(-10, 11, 5):
@@ -412,12 +578,12 @@ def draw_forest():
     ]
 
   # Dibujar ciervos
-    fawn_positions = [(1, 0.5, 3), (-2, 0.5, -1), (3, 0.5, 0)] 
+    fawn_positions = [(6, 0, 3), (-5, 0, -1), (6, 0, 0)] 
     for x, y, z in fawn_positions:
        draw_fawn(x, y, z)
 
 # Dibujar vacas
-    cow_positions = [(4, 0.5, -3), (-3, 0.5, 5), (2, 0.5, -2)]  
+    cow_positions = [(4, 0.25, -3), (-3, 0.25, 5), (2, 0.25, -2)]  
     for x, y, z in cow_positions:
        draw_cow(x, y, z)
 
@@ -452,20 +618,16 @@ def draw_forest():
         draw_fallen_log(x, y, z, length=2.5)
       
      # Dibujar perritos
-    dog_positions = [(1, 0, 3), (-2, 0, -1), (3, 0, 0)]  
+    dog_positions = [(0, 0, 3), (-2, 0, -1), (7, 0, 0)]  
     for x, y, z in dog_positions:
         draw_dog(x, y, z)
  
-    # Dibujar caballos
-    horse_positions = [(1, 5, 3), (-2, 5, -1), (4, 5, 0)]  
+    # Dibujar caballos 
+    horse_positions = [(4, 0, 3), (-4, 0, -1), (8, 0, 0)]  
     for x, y, z in horse_positions:
         draw_horse(x, y, z)
 
-     # Dibujar nubes
-    cloud_positions = [(3, 8, 3), (-4, 10, -5), (5, 9, -8), (-8, 12, 4)]
-    for x, y, z in cloud_positions:
-        draw_cloud(x, y, z)
-
+    
 def detect_and_control_gestures(new_pos, prev_pos):
     global rotation_angle, scaling_factor, translation_x, translation_y, last_action_time
 
@@ -532,9 +694,9 @@ def control_window():
         frame = cv.flip(frame, 1)
         gray_frame = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
-        # Calcular el flujo optico para la bola verde
+        # Calcular el flujo óptico para la bola verde
         new_ball_pos, st, err = cv.calcOpticalFlowPyrLK(prev_gray, gray_frame, ball_pos, None, **lk_params)
-        # Calcular el flujo optico para la bola azul
+        # Calcular el flujo óptico para la bola azul
         new_blue_pos, st, err = cv.calcOpticalFlowPyrLK(prev_gray, gray_frame, blue_ball_pos, None, **lk_params)
 
         if new_ball_pos is not None:
@@ -569,7 +731,7 @@ def control_window():
 
         if cv.waitKey(1) & 0xFF == 27:
             break
-
+        
 def opengl_window():
     if not glfw.init():
         return
